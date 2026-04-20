@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+@mixin container {
+  width: min(100% - 32px, #{$container});
+  margin-inline: auto;
+}
+
+@mixin card {
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  box-shadow: $shadow;
+}
+
+@mixin hover-lift {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(107, 138, 255, 0.4);
+  }
+}
+
+@mixin max($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin min($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
